@@ -20,5 +20,18 @@ flatpak install flathub org.libreoffice.LibreOffice
 ``` bash
 npm start //启动服务
 ```
+调用方式：
+``` typescript
+const formData = new FormData()
+      formData.append('file', file)
+const response = await fetch('http://localhost:3001/api/convert-docx-to-pdf', {
+          method: 'POST',
+          body: formData,
+        })
+if (!response.ok) {
+          throw new Error('文件转换失败，请稍后重试')
+}
+const arrayBuffer = await response.arrayBuffer()
+```
 ### 生产环境：
 无需编译，直接全部部署到服务器，然后用pm2启动。具体方法恕不详述，请自行查阅资料。
